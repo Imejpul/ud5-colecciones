@@ -43,4 +43,12 @@ public class Empleado {
     public void setFechaContrato(String fechaContrato) {
         this.fechaContrato = fechaContrato;
     }
+
+    public Empresa getCorp() {
+        return corp;
+    }
+
+    public void setCorp(Empresa corp) {
+        this.corp = corp;
+    }
 }

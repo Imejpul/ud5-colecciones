@@ -13,6 +13,16 @@ public class Empresa {
     public Empresa() {
     }
 
+    public void mostrarEmpleados() {
+
+        for (Empleado empleado : empleados) {
+            System.out.println("Nombre: " + empleado.getNombre());
+            System.out.println("Apellidos: " + empleado.getApellidos());
+            System.out.println("Fecha Nacimiento: " + empleado.getFechaNacimiento());
+            System.out.println("Fecha Contrato: " + empleado.getFechaContrato() + "\n");
+        }
+    }
+
     public String getNombre() {
         return nombre;
     }
@@ -27,5 +37,9 @@ public class Empresa {
 
     public void setAnyoFundacion(String anyoFundacion) {
         this.anyoFundacion = anyoFundacion;
+    }
+
+    public List<Empleado> getEmpleados() {
+        return empleados;
     }
 }
