@@ -73,6 +73,8 @@ public class Main {
                             String codigo = br.readLine();
                             cuentaBancaria.setCodigoCuenta(codigo);
 
+                            //añadir titular
+
                             cuentas.add(cuentaBancaria);
                             break;
 
@@ -87,23 +89,22 @@ public class Main {
                             System.out.print("Fecha: ");
                             apunte.setFecha(br.readLine());
 
+                            //añadir a cuenta concreta
+
                             apuntes.add(apunte);
                             break;
 
                         case 3:
-                            for (CuentaBancaria cta : cuentas) {
-                                System.out.println("---Cuentas---");
-                                System.out.println("Código: " + cta.getCodigoCuenta());
-                            }
-                            System.out.print("Introduzca código cuenta a borrar: ");
-                            String codigoCta = br.readLine().toLowerCase();
+                            //buscar titular
 
-                            for (CuentaBancaria cta : cuentas) {
-                                if (cta.getCodigoCuenta().toLowerCase().equals(codigoCta)) {
-                                    cuentas.remove(cta);
-                                    System.out.println("Cuenta bancaria codigo " + codigoCta + " borrada...");
-                                }
-                            }
+                            //buscar cuenta
+
+                            //borrar apuntes
+
+                            //borrar cta titular
+
+                            //borrar cta en banco
+
                             break;
 
                         default:
@@ -143,4 +144,5 @@ public class Main {
             }
         } while (opcion != 4);
     }
+
 }
