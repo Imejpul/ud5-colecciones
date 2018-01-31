@@ -3,6 +3,9 @@ package com.imejpul;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class Main {
 
@@ -11,10 +14,10 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int opcion;
 
-        do {
+        List<Asignatura> asignaturas = new ArrayList<>();
+        List<Alumno> alumnos = new ArrayList<>();
 
-            Alumno al = new Alumno();
-            Asignatura as = new Asignatura();
+        do {
 
             System.out.println("\n" +
                     "    1. Crear nuevo alumno.\n" +
@@ -30,6 +33,8 @@ public class Main {
             switch (opcion) {
 
                 case 1:
+                    Alumno al = new Alumno();
+
                     System.out.println("---Introduzca datos Alumno---");
 
                     System.out.print("Nombre: ");
@@ -41,10 +46,12 @@ public class Main {
                     System.out.print("Email: ");
                     al.setEmail(br.readLine());
 
-                    as.getAlumnos().add(al);
+                    alumnos.add(al);
                     break;
 
                 case 2:
+                    Asignatura as = new Asignatura();
+
                     System.out.println("---Introduzca datos Asignatura---");
 
                     System.out.print("Nombre: ");
@@ -53,53 +60,49 @@ public class Main {
                     System.out.print("Horas Semanales: ");
                     as.setHorasSemenales(Integer.parseInt(br.readLine()));
 
-                    al.getAsignaturas().add(as);
+                    asignaturas.add(as);    //Creación objeto y añadimos su referencia en la lista a la vez: asignaturas.add(new Asignatura (nombre, horasSemanales);  //Hay que crear constructor con variables.
                     break;
 
                 case 3:
-                    String alu;
-                    String asi;
+                    Alumno alumnoEcontrado = buscarAlumno(br, alumnos);
 
-                    System.out.print("Introduzca nombre Alumno: ");
-                    alu = br.readLine();
+                    Asignatura asignaturaEcontrada = buscarAsignatura(br, asignaturas);
 
-                    System.out.print("Introduzca nombre Asignatura: ");
-                    asi = br.readLine();
+                    if (asignaturaEcontrada != null && alumnoEcontrado != null) {
+                        asignaturaEcontrada.getAlumnos().add(alumnoEcontrado);
+                        alumnoEcontrado.getAsignaturas().add(asignaturaEcontrada);
 
-                    for (Alumno a : as.getAlumnos()) {
-                        if (a.getNombre().toLowerCase().equals(alu)) {
-                            for (Asignatura asign : al.getAsignaturas()) {
-                                if (asign.getNombre().toLowerCase().equals(asi)) {
-                                    asign.getAlumnos().add(a);
-                                    a.getAsignaturas().add(asign);
-                                }
-                            }
-                        }
+                        System.out.println("¡Alumno matriculado correctamente!");
+
+                    } else {
+                        System.out.println("¡Error!");
                     }
                     break;
 
                 case 4:
-                    String asignatura;
-                    System.out.print("Introduzca nombre Asignatura: ");
-                    asignatura = br.readLine();
+                    asignaturaEcontrada = buscarAsignatura(br, asignaturas);
 
-                    for (Asignatura asig : al.getAsignaturas()) {
-                        if (asig.getNombre().toLowerCase().equals(asignatura)) {
-                            asig.mostrarAlumnos();
-                        }
-                    }
+                    System.out.println("Alumnos de " + asignaturaEcontrada.getNombre());
+                    asignaturaEcontrada.getAlumnos().forEach(a -> {
+                        System.out.println(a);
+                    });
                     break;
 
                 case 5:
-                    String alumno;
-                    System.out.println("Introduzca nombre Alumno");
-                    alumno = br.readLine();
+                    alumnoEcontrado = buscarAlumno(br, alumnos);
 
-                    for (Alumno alum : as.getAlumnos()) {
-                        if (alum.getNombre().toLowerCase().equals(alumno)) {
-                            alum.mostrarAsignaturas();
-                        }
+                    int total = 0;
+
+                    System.out.println("Asignaturas de: " + alumnoEcontrado.getNombre());
+                    Iterator<Asignatura> it = alumnoEcontrado.getAsignaturas().iterator();
+
+                    while (it.hasNext()) {
+                        Asignatura subject = it.next();
+                        System.out.println(subject);
+                        total += subject.getHorasSemenales();
                     }
+
+                    System.out.println("Total de horas: " + total);
                     break;
 
                 case 6:
@@ -112,5 +115,53 @@ public class Main {
             }
         } while (opcion != 6);
 
+    }
+
+    private static Alumno buscarAlumno(BufferedReader br, List<Alumno> alumnos) throws IOException {
+        String alu;
+
+        System.out.println("---Alumnos del centro---");
+        for (Alumno alumTemp : alumnos) {
+            System.out.println(alumTemp.getNombre());
+        }
+
+        System.out.print("Introduzca nombre Alumno: ");
+        alu = br.readLine();
+
+        int i = 0;
+        while (i < alumnos.size() && !alu.equalsIgnoreCase(alumnos.get(i).getNombre())) {
+            i++;
+        }
+
+        Alumno alumnoEcontrado = null;
+
+        if (i < alumnos.size()) {
+            alumnoEcontrado = alumnos.get(i);
+
+        }
+        return alumnoEcontrado;
+    }
+
+    private static Asignatura buscarAsignatura(BufferedReader br, List<Asignatura> asignaturas) throws IOException {
+        String asi;
+        System.out.println("---Asignaturas del centro---");
+        for (Asignatura asigTemp : asignaturas) {
+            System.out.println(asigTemp.getNombre());
+        }
+
+        System.out.print("Introduzca nombre Asignatura: ");
+        asi = br.readLine();
+
+        int i = 0;
+        while (i < asignaturas.size() && !asi.equalsIgnoreCase(asignaturas.get(i).getNombre())) {
+            i++;
+        }
+
+        Asignatura asignaturaEcontrada = null;
+
+        if (i < asignaturas.size()) {
+            asignaturaEcontrada = asignaturas.get(i);
+        }
+        return asignaturaEcontrada;
     }
 }

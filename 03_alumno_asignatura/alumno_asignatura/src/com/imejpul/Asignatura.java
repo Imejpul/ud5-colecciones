@@ -21,6 +21,15 @@ public class Asignatura {
         }
     }
 
+    @Override
+    public String toString() {
+        return "Asignatura{" +
+                "nombre='" + nombre + '\'' +
+                ", horasSemenales=" + horasSemenales +
+                ", alumnos=" + alumnos +
+                '}';
+    }
+
     public String getNombre() {
         return nombre;
     }

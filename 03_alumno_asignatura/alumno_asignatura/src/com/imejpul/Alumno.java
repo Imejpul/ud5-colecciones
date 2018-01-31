@@ -28,6 +28,16 @@ public class Alumno {
         System.out.print("Horas Totales: " + horasTotales);
     }
 
+    @Override
+    public String toString() {
+        return "Alumno{" +
+                "nombre='" + nombre + '\'' +
+                ", apellidos='" + apellidos + '\'' +
+                ", email='" + email + '\'' +
+                ", asignaturas=" + asignaturas +
+                '}';
+    }
+
     public String getNombre() {
         return nombre;
     }
