@@ -13,12 +13,28 @@ public class CuentaBancaria {
     public CuentaBancaria() {
     }
 
+    public CuentaBancaria(String codigoCuenta) {
+        this.codigoCuenta = codigoCuenta;
+    }
+
     public double calcularSaldo() {
-        return 0;
+
+        double total = 0.0;
+
+        for (Apunte a : apuntes) {
+            total += a.getCantidad();
+        }
+        return total;
     }
 
     public void nuevoApunte(double cantidad) {
 
+        Apunte a = new Apunte();
+        a.setCantidad(cantidad);
+        a.setFecha("05/02/18");
+
+        apuntes.add(a);
+        a.setCuentaBancaria(this);
     }
 
     public String getCodigoCuenta() {

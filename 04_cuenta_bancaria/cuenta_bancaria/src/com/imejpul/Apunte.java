@@ -5,7 +5,7 @@ public class Apunte {
     private double cantidad;
     private String fecha;
 
-    private CuentaBancaria cuentaBancaria = new CuentaBancaria();
+    private CuentaBancaria cuentaBancaria;
 
     public Apunte() {
     }
@@ -28,5 +28,9 @@ public class Apunte {
 
     public CuentaBancaria getCuentaBancaria() {
         return cuentaBancaria;
+    }
+
+    public void setCuentaBancaria(CuentaBancaria cuentaBancaria) {
+        this.cuentaBancaria = cuentaBancaria;
     }
 }

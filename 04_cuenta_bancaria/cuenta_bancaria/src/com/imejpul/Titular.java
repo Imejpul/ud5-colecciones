@@ -15,6 +15,13 @@ public class Titular {
     public Titular() {
     }
 
+    public Titular(String nombre, String apellido, String DNI, String fechaAlta) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.DNI = DNI;
+        this.fechaAlta = fechaAlta;
+    }
+
     public String getNombre() {
         return nombre;
     }

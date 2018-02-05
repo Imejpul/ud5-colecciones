@@ -17,7 +17,6 @@ public class Main {
 
         List<CuentaBancaria> cuentas = new ArrayList<>();
         List<Titular> titulares = new ArrayList<>();
-        List<Apunte> apuntes = new ArrayList<>();
 
         do {
             System.out.println("\n" +
@@ -81,29 +80,36 @@ public class Main {
                         case 2:
                             Apunte apunte = new Apunte();
 
+                            //añadir a cuenta concreta
+
+                            int i = 0;
+                            for (CuentaBancaria c : cuentas) {
+                                System.out.println(i + " " + c);
+                                i++;
+                            }
+
+                            System.out.print("Elija Cuenta: ");
+                            int indice = Integer.parseInt((br.readLine()));
+
                             System.out.println("---Introduzca datos apunte---");
 
                             System.out.print("Cantidad: ");
-                            apunte.setCantidad(Double.parseDouble(br.readLine()));
+                            double cantidad = Double.parseDouble(br.readLine());
 
-                            System.out.print("Fecha: ");
-                            apunte.setFecha(br.readLine());
-
-                            //añadir a cuenta concreta
-
-                            apuntes.add(apunte);
+                            cuentas.get(indice).nuevoApunte(cantidad);
                             break;
 
                         case 3:
-                            //buscar titular
 
-                            //buscar cuenta
+                            //obtener titular
 
-                            //borrar apuntes
+                            //obtener cuenta bancaria de titular
 
-                            //borrar cta titular
+                            //obtener apuntes de cuenta bancaria y borrar referencias entrantes de cuenta bancaria (set a null)
 
-                            //borrar cta en banco
+                            //borrar referencias de entrada en cuenta bancaria desde titular (set a null)
+
+                            //borrar referencias de entrada en cuenta bancaria dsde main (remove en lista)
 
                             break;
 
@@ -123,6 +129,11 @@ public class Main {
 
                     switch (opcion) {
                         case 1:
+                            //obtener titular (recorriendo lista)
+
+                            //recorrer cuentas titular y elegir correcta
+
+                            //llamar a funcion calcular saldo
                             break;
 
                         case 2:
