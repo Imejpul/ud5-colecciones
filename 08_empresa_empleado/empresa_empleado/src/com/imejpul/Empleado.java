@@ -2,7 +2,7 @@ package com.imejpul;
 
 import java.util.Objects;
 
-public class Empleado {
+public abstract class Empleado {
 
     private String nombre;
     private String apellidos;
