@@ -31,6 +31,8 @@ public class Main {
 
             switch (opcion) {
                 case 12:
+                    //pedir nombre empresa y almacenar en variable
+                    //pedir año fundación y almacenar en variable
                     break;
                 case 13:
                     break;
