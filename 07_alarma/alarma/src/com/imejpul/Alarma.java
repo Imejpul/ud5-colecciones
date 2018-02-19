@@ -13,15 +13,31 @@ public class Alarma {
     private List<SensorMovimiento> sensores = new ArrayList<>();
 
     public void consultarSensores() {
+        for (SensorMovimiento s : sensores) {
+            boolean estado = s.hayMovimiento(s.getUmbral());
 
+            if (estado) {
+                System.out.println("¡Detectado movimiento!");
+
+                System.out.println("Dando aviso a.." + telefonoAviso);
+
+                System.out.println("---ALARMA DISPARADA POR:---");
+                System.out.println(s.toString());
+            }
+        }
     }
 
     public void activar() {
-
+        activada = true;
     }
 
-    public void desactivar(int pin) {
-
+    public void desactivar(int pinDes) {
+        if (pinDes == pin) {
+            activada = false;
+            System.out.println("Alarma Desactivada");
+        } else {
+            System.out.println("¡ERROR!");
+        }
     }
 
     public Alarma(int pin, boolean activada, int telefonoAviso) {
@@ -78,5 +94,9 @@ public class Alarma {
 
     public void setTelefonoAviso(int telefonoAviso) {
         this.telefonoAviso = telefonoAviso;
+    }
+
+    public List<SensorMovimiento> getSensores() {
+        return sensores;
     }
 }

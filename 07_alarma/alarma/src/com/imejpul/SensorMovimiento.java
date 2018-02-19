@@ -8,7 +8,13 @@ public class SensorMovimiento {
 
     private Alarma alarma;
 
-    public boolean hayMovimiento() {
+    public boolean hayMovimiento(int umbral) {
+        int valor = (int) (Math.random() * 100) + 1;
+
+        if (valor > umbral) {
+            return true;
+        }
+
         return false;
     }
 
