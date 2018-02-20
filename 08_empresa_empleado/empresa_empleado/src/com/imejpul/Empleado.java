@@ -9,14 +9,17 @@ public abstract class Empleado {
     private String fecha_nacimiento;
     private String fecha_contrato;
 
-    public Empleado(String nombre, String apellidos, String fecha_nacimiento, String fecha_contrato) {
+    private Empresa empresa;
+
+    public Empleado() {
+    }
+
+    public Empleado(String nombre, String apellidos, String fecha_nacimiento, String fecha_contrato, Empresa empresa) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.fecha_nacimiento = fecha_nacimiento;
         this.fecha_contrato = fecha_contrato;
-    }
-
-    public Empleado() {
+        this.empresa = empresa;
     }
 
     public String getNombre() {
@@ -49,6 +52,14 @@ public abstract class Empleado {
 
     public void setFecha_contrato(String fecha_contrato) {
         this.fecha_contrato = fecha_contrato;
+    }
+
+    public Empresa getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
     }
 
     @Override

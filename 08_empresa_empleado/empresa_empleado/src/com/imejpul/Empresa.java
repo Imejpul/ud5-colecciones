@@ -1,11 +1,14 @@
 package com.imejpul;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Empresa {
 
     private String nombre;
     private String anyoFundacion;
+
+    private List<Empleado> empleados;
 
     public Empresa(String nombre, String anyoFundacion) {
         this.nombre = nombre;
@@ -29,6 +32,10 @@ public class Empresa {
 
     public void setAnyoFundacion(String anyoFundacion) {
         this.anyoFundacion = anyoFundacion;
+    }
+
+    public List<Empleado> getEmpleados() {
+        return empleados;
     }
 
     @Override
