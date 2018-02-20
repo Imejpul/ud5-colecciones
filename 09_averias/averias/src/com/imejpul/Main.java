@@ -3,6 +3,9 @@ package com.imejpul;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Main {
 
@@ -10,6 +13,9 @@ public class Main {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int opcion;
+
+        List<Averia> averias = new LinkedList<>();
+        List<Tecnico> tecnicos = new ArrayList<>();
 
         do {
             System.out.println("\n" +
@@ -27,22 +33,35 @@ public class Main {
             System.out.print("¿Opcion? = ");
             opcion = Integer.parseInt(br.readLine());
 
-            switch (opcion){
+            switch (opcion) {
                 case 1:
+                    //pedir nombre técnico y almacenar en variable
+
+                    //pedir nivel técnicmo y almacenar en variable
+
+                    //añadir a lista general de técnicos (inicializando constructor con parámetros pedidos)
                     break;
+
                 case 21:
                     break;
+
                 case 22:
                     break;
+
                 case 23:
                     break;
+
                 case 31:
                     break;
+
                 case 32:
                     break;
+
                 case 33:
                     break;
+
                 case 4:
+                    System.out.println("Hasta la próxima");
                     break;
             }
         } while (opcion != 4);

@@ -1,5 +1,7 @@
 package com.imejpul;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Averia {
@@ -9,6 +11,8 @@ public class Averia {
     private String fechaApertura;
     private int nivel;
 
+    private List<Tecnico> tecnicosAveria = new ArrayList<>();
+
     public Averia(String titulo, String descripcion, String fechaApertura, int nivel) {
         this.titulo = titulo;
         this.descripcion = descripcion;
@@ -17,6 +21,10 @@ public class Averia {
     }
 
     public Averia() {
+    }
+
+    public List<Tecnico> getTecnicosAveria() {
+        return tecnicosAveria;
     }
 
     public String getTitulo() {
