@@ -1,5 +1,6 @@
 package com.imejpul;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -8,7 +9,7 @@ public class Empresa {
     private String nombre;
     private String anyoFundacion;
 
-    private List<Empleado> empleados;
+    private List<Empleado> empleados = new ArrayList<>();
 
     public Empresa(String nombre, String anyoFundacion) {
         this.nombre = nombre;
