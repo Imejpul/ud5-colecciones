@@ -1,11 +1,15 @@
 package com.imejpul;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 public class Asignatura {
 
     private String nombre;
     private int horasSemanales;
+
+    private Set<Alumno> alumnos = new HashSet<>();  //debido a la restricción de no haber duplicados
 
     public Asignatura(String nombre, int horasSemanales) {
         this.nombre = nombre;
@@ -13,6 +17,10 @@ public class Asignatura {
     }
 
     public Asignatura() {
+    }
+
+    public Set<Alumno> getAlumnos() {
+        return alumnos;
     }
 
     public String getNombre() {
